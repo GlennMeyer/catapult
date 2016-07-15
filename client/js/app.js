@@ -2,15 +2,7 @@
 
 angular
     .module('myApp', [
-        'ngRoute'
     ])
-	.config(($routeProvider, $locationProvider) => {
-	    $routeProvider
-	        .when('/', {
-	            templateUrl: 'views/main.html',
-	            controller: 'MainCtrl'
-	        })
-	        .otherwise({
-	            redirectTo: '/'
-	        });
-});
+    .controller('MainCtrl', function MainCtrl() {
+    	this.hello = "Hello World!"
+    });
