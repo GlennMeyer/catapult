@@ -4,6 +4,8 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
+var _models = require('./db/models');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var hostname = '127.0.0.1';

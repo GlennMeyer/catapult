@@ -1,4 +1,5 @@
 import express from 'express';
+import {sequelize, User, Employee, Pub, Foo} from './db/models';
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -12,4 +13,3 @@ app.get('/', (req, res) => {
 app.listen(port, hostname, () => {
 	console.log(`Server running at http://${hostname}:${port}/`);
 });
-
