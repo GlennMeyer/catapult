@@ -22,6 +22,8 @@ var sequelize = new _sequelize2.default('sequelize', 'username', 'password', {
 	}
 });
 
+// CLI for creating new DB and user
+// 
 // sudo mysql
 // CREATE DATABASE sequelize;
 // CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
@@ -30,7 +32,10 @@ var sequelize = new _sequelize2.default('sequelize', 'username', 'password', {
 // mysql -u username -p sequelize
 // password
 
+// Connect with DB
+
 // Sequelize code follows
+
 sequelize.authenticate().then(function (err) {
 	console.log('Connection has been established successfully.');
 }).catch(function (err) {
@@ -38,6 +43,7 @@ sequelize.authenticate().then(function (err) {
 });
 
 // Define model 'user'
+
 var User = sequelize.define('user', {
 	firstName: {
 		type: _sequelize2.default.STRING,
@@ -53,6 +59,7 @@ var User = sequelize.define('user', {
 });
 
 // Create table 'user' and insert new user
+
 User.sync({ force: true }).then(function () {
 	return User.create({
 		firstName: 'John',
@@ -64,6 +71,7 @@ User.sync({ force: true }).then(function () {
 });
 
 // Define model 'employee' with custom getter & setter methods
+
 var Employee = sequelize.define('employee', {
 	name: {
 		type: _sequelize2.default.STRING,
@@ -84,6 +92,7 @@ var Employee = sequelize.define('employee', {
 });
 
 // Create 'employee' table and insert new employee, printing custom getter
+
 Employee.sync({ force: true }).then(function () {
 	Employee.create({ name: 'John Doe', title: 'senior engineer' }).then(function (employee) {
 		console.log(employee.get('name'));
@@ -120,6 +129,7 @@ var Pub = sequelize.define('pub', {
 });
 
 // Create 'pub' table
+
 Pub.sync({ force: true }).then(function () {
 	Pub.create({
 		name: 'Draught House Pub & Brewery',
@@ -132,6 +142,7 @@ Pub.sync({ force: true }).then(function () {
 });
 
 // Define model 'foo' with customizations
+
 var Foo = sequelize.define('foo', {
 	bar: {
 		type: _sequelize2.default.STRING
@@ -141,6 +152,7 @@ var Foo = sequelize.define('foo', {
 	createdAt: false,
 	updatedAt: 'updateTimestamp',
 	deletedAt: 'destroyTime',
+	// soft delete
 	paranoid: true,
 	comment: 'I\'m a table comment!'
 

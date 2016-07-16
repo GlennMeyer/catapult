@@ -1,4 +1,5 @@
 // Sequelize code follows
+
 import Sequelize from 'sequelize';
 
 const sequelize = new Sequelize('sequelize', 'username', 'password', {
@@ -12,6 +13,8 @@ const sequelize = new Sequelize('sequelize', 'username', 'password', {
 	},
 });
 
+// CLI for creating new DB and user
+// 
 // sudo mysql
 // CREATE DATABASE sequelize;
 // CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
@@ -19,6 +22,8 @@ const sequelize = new Sequelize('sequelize', 'username', 'password', {
 // \q
 // mysql -u username -p sequelize
 // password
+
+// Connect with DB
 
 sequelize
 	.authenticate()
@@ -30,6 +35,7 @@ sequelize
 	});
 
 // Define model 'user'
+
 const User = sequelize.define('user', {
 	firstName: {
 		type: Sequelize.STRING,
@@ -45,6 +51,7 @@ const User = sequelize.define('user', {
 });
 
 // Create table 'user' and insert new user
+
 User.sync({force: true}).then(() => {
 	return User.create({
 		firstName: 'John',
@@ -56,6 +63,7 @@ User.sync({force: true}).then(() => {
 });
 
 // Define model 'employee' with custom getter & setter methods
+
 const Employee = sequelize.define('employee', {
 	name: {
 		type: Sequelize.STRING,
@@ -76,6 +84,7 @@ const Employee = sequelize.define('employee', {
 });
 
 // Create 'employee' table and insert new employee, printing custom getter
+
 Employee.sync({force: true}).then(() => {
 	Employee
 		.create({name: 'John Doe', title: 'senior engineer'})
@@ -114,6 +123,7 @@ const Pub = sequelize.define('pub', {
 })
 
 // Create 'pub' table
+
 Pub.sync({force: true}).then(() => {
 	Pub.create({
 			name: 'Draught House Pub & Brewery',
@@ -127,6 +137,7 @@ Pub.sync({force: true}).then(() => {
 })
 
 // Define model 'foo' with customizations
+
 const Foo = sequelize.define('foo', {
 	bar: {
 		type: Sequelize.STRING
@@ -136,6 +147,7 @@ const Foo = sequelize.define('foo', {
 	createdAt: false,
 	updatedAt: 'updateTimestamp',
 	deletedAt: 'destroyTime',
+	// soft delete
 	paranoid: true,
 	comment: 'I\'m a table comment!'
 
