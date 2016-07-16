@@ -4,6 +4,10 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
+var _mongodb = require('./db/mongodb');
+
+var _mongodb2 = _interopRequireDefault(_mongodb);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var hostname = '127.0.0.1';
