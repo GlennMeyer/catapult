@@ -2,11 +2,11 @@
   "name": "catapult",
   "version": "1.0.0",
   "description": "Example of a bare bones node server.",
-  "main": "server/index.js",
+  "main": "server/server.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node src/index.js",
-    "build": "babel src --out-dir server",
-    "start": "npm run build && node server/index.js",
+    "dev": "nodemon --exec babel-node src/server.js",
+    "build": "babel src --out-dir dist",
+    "start": "npm run build && node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
